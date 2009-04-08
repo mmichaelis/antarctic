@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--
+
+    Copyright (C) 2009 Mark Michaelis <thragor_at_gmx.net> Licensed under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+    either express or implied. See the License for the specific language governing permissions and limitations under the
+    License.
+  -->
+<project
+  name="org.arctic.ant.taskdefs.LowerTest"
+  basedir="."
+  xmlns:antarctic="antlib:org.arctic.ant">
+
+  <property
+    name="lower.simple"
+    value="LoremIpsumDolor" />
+  
+  <property
+    name="lower.umlauts"
+    value="LörümÜpsämDälör-ß€&quot;" />
+  
+  <propertyset
+    id="lower.properties">
+    <propertyref
+      name="lower.simple" />
+    <propertyref
+      name="lower.umlauts" />
+  </propertyset>
+  
+  <target
+    name="lower-simple">
+    <antarctic:lower
+      property="lower.simple.result"
+      value="${lower.simple}" />
+  </target>
+
+  <target
+    name="lower-umlauts">
+    <antarctic:lower
+      property="lower.umlauts.result"
+      value="${lower.umlauts}" />
+  </target>
+
+  <target
+    name="lower-propertyset-nodot">
+    <antarctic:lower
+      prefix="result">
+      <propertyset
+        refid="lower.properties" />
+    </antarctic:lower>
+  </target>
+
+  <target
+    name="lower-propertyset-dot">
+    <antarctic:lower
+      prefix="result.">
+      <propertyset
+        refid="lower.properties" />
+    </antarctic:lower>
+  </target>
+
+  <target
+    name="lower-propertyset-empty">
+    <antarctic:lower
+      prefix="result" />
+  </target>
+
+  <target
+    name="lower-empty-value">
+    <antarctic:lower
+      property="lower.empty" value="" prefix="" />
+  </target>
+
+</project>

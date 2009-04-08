@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--
+
+    Copyright (C) 2009 Mark Michaelis <thragor_at_gmx.net> Licensed under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+    either express or implied. See the License for the specific language governing permissions and limitations under the
+    License.
+  -->
+<project
+  name="org.arctic.ant.taskdefs.IdentityTest"
+  basedir="."
+  xmlns:antarctic="antlib:org.arctic.ant">
+
+  <property
+    name="identity.simple"
+    value="LoremIpsumDolor" />
+  
+  <property
+    name="identity.umlauts"
+    value="LörümÜpsämDälör-ß€&quot;" />
+  
+  <propertyset
+    id="identity.properties">
+    <propertyref
+      name="identity.simple" />
+    <propertyref
+      name="identity.umlauts" />
+  </propertyset>
+  
+  <target
+    name="identity-simple">
+    <antarctic:identity
+      property="identity.simple.result"
+      value="${identity.simple}" />
+  </target>
+
+  <target
+    name="identity-umlauts">
+    <antarctic:identity
+      property="identity.umlauts.result"
+      value="${identity.umlauts}" />
+  </target>
+
+  <target
+    name="identity-propertyset-nodot">
+    <antarctic:identity
+      prefix="result">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-propertyset-dot">
+    <antarctic:identity
+      prefix="result.">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-propertyset-empty">
+    <antarctic:identity
+      prefix="result" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-1">
+    <antarctic:identity
+      prefix="result"
+      property="identity.invalid.attributes.1" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-2">
+    <antarctic:identity
+      prefix="result"
+      value="${identity.simple}" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-3">
+    <antarctic:identity
+      prefix="result"
+      property="identity.invalid.attributes.3"
+      value="${identity.simple}" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-4">
+    <antarctic:identity
+      prefix="result"
+      property="identity.invalid.attributes.4"
+      value="${identity.simple}">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+
+  </target>
+
+  <target
+    name="identity-invalid-attributes-5">
+    <antarctic:identity
+      property="identity.invalid.attributes.5"
+      value="${identity.simple}">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+
+  </target>
+
+  <target
+    name="identity-invalid-attributes-6">
+    <antarctic:identity
+      value="${identity.simple}">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-invalid-attributes-7">
+    <antarctic:identity
+      property="identity.invalid.attributes.7">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-invalid-attributes-8">
+    <antarctic:identity>
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-invalid-attributes-9">
+    <antarctic:identity
+      value="${identity.simple}" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-10">
+    <antarctic:identity
+      property="identity.invalid.attributes.10" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-11">
+    <antarctic:identity
+      prefix="result"
+      property="identity.invalid.attributes.11"
+      value="" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-12">
+    <antarctic:identity
+      prefix="result"
+      value="${identity.simple}"
+      property="" />
+  </target>
+
+  <target
+    name="identity-invalid-attributes-13">
+    <antarctic:identity
+      property="identity.invalid.attributes.13"
+      value="${identity.simple}"
+      prefix="">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+
+  </target>
+
+  <target
+    name="identity-invalid-attributes-14">
+    <antarctic:identity
+      value="${identity.simple}"
+      property=""
+      prefix="">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-invalid-attributes-15">
+    <antarctic:identity
+      property="identity.invalid.attributes.15"
+      value=""
+      prefix="">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-invalid-attributes-16">
+    <antarctic:identity property="" prefix="" value="">
+      <propertyset
+        refid="identity.properties" />
+    </antarctic:identity>
+  </target>
+
+  <target
+    name="identity-invalid-attributes-17">
+    <antarctic:identity
+      value="${identity.simple}" property="" prefix=""/>
+  </target>
+
+  <target
+    name="identity-empty-value">
+    <antarctic:identity
+      property="identity.empty" value="" prefix="" />
+  </target>
+
+</project>

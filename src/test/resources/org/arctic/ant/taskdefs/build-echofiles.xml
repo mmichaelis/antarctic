@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009 Mark Michaelis <thragor_at_gmx.net>
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project
+  name="org.arctic.ant.taskdefs.EchoFilesTest"
+  basedir="."
+  xmlns:antarctic="antlib:org.arctic.ant">
+
+  <dirname
+    property="echofiles.dir"
+    file="${ant.file.org.arctic.ant.taskdefs.EchoFilesTest}" />
+  <basename
+    property="echofiles.filename"
+    file="${ant.file.org.arctic.ant.taskdefs.EchoFilesTest}" />
+
+  <fileset
+    dir="${basedir}"
+    id="fileset-empty">
+    <exclude
+      name="**/*" />
+  </fileset>
+  <fileset
+    id="fileset-self"
+    file="${ant.file.org.arctic.ant.taskdefs.EchoFilesTest}" />
+  <fileset
+    id="fileset-not-existant"
+    file="NoWhereMan.hidden" />
+  <fileset
+    id="fileset-multiple"
+    dir="${echofiles.dir}">
+    <include
+      name="**/*" />
+  </fileset>
+
+  <target
+    name="echofiles-type-invalid-string">
+    <antarctic:echofiles
+      type="invalidString" />
+  </target>
+
+  <target
+    name="echofiles-missing-resource-collection">
+    <antarctic:echofiles />
+  </target>
+
+  <target
+    name="echofiles-not-exists-text-stdout">
+    <antarctic:echofiles>
+      <fileset
+        refid="fileset-not-existant" />
+    </antarctic:echofiles>
+  </target>
+
+  <target
+    name="echofiles-self-text-stdout">
+    <antarctic:echofiles>
+      <fileset
+        refid="fileset-self" />
+    </antarctic:echofiles>
+  </target>
+
+  <target
+    name="echofiles-self-xml-stdout">
+    <antarctic:echofiles
+      type="xml">
+      <fileset
+        refid="fileset-self" />
+    </antarctic:echofiles>
+  </target>
+
+  <target
+    name="echofiles-self-zip-text-stdout">
+    <zip
+      destfile="${echofiles.dir}/echofiles-self.zip"
+      basedir="${echofiles.dir}"
+      excludes="**/*.zip" />
+
+    <antarctic:echofiles>
+      <zipfileset
+        src="${echofiles.dir}/echofiles-self.zip">
+        <include
+          name="${echofiles.filename}" />
+      </zipfileset>
+    </antarctic:echofiles>
+
+    <delete
+      file="${echofiles.dir}/echofiles-self.zip"
+      deleteonexit="true" />
+  </target>
+
+  <target
+    name="echofiles-none-text-file">
+    <antarctic:echofiles
+      file="${outfile}">
+      <fileset
+        refid="fileset-empty" />
+    </antarctic:echofiles>
+  </target>
+
+  <target
+    name="echofiles-multiple-xml-file">
+    <antarctic:echofiles
+      file="${outfile}"
+      type="xml">
+      <fileset
+        refid="fileset-multiple" />
+    </antarctic:echofiles>
+  </target>
+
+  <target
+    name="clean">
+  </target>
+
+</project>

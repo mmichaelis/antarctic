@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--
+
+    Copyright (C) 2009 Mark Michaelis <thragor_at_gmx.net> Licensed under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+    either express or implied. See the License for the specific language governing permissions and limitations under the
+    License.
+  -->
+<project
+  name="org.arctic.ant.taskdefs.TransformTest"
+  basedir="."
+  xmlns:antarctic="antlib:org.arctic.ant">
+
+  <property
+    name="transform.simple"
+    value="LoremIpsumDolor" />
+  
+  <property
+    name="transform.umlauts"
+    value="LörümÜpsämDälör-ß€&quot;" />
+  
+  <propertyset
+    id="transform.properties">
+    <propertyref
+      name="transform.simple" />
+    <propertyref
+      name="transform.umlauts" />
+  </propertyset>
+  
+  <target
+    name="transform-missing-type">
+    <antarctic:transform property="transform.simple.result"
+      value="${transform.simple}" />
+  </target>
+
+  <target
+    name="transform-empty-type">
+    <antarctic:transform type="" property="transform.simple.result"
+      value="${transform.simple}" />
+  </target>
+
+  <target
+    name="transform-invalid-type">
+    <antarctic:transform type="invalid" property="transform.simple.result"
+      value="${transform.simple}" />
+  </target>
+
+  <target
+    name="transform-simple-upper">
+    <antarctic:transform type="upper"
+      property="transform.simple.result"
+      value="${transform.simple}" />
+  </target>
+
+  <target
+    name="transform-simple-lower">
+    <antarctic:transform type="lower"
+      property="transform.simple.result"
+      value="${transform.simple}" />
+  </target>
+
+  <target
+    name="transform-simple-identity">
+    <antarctic:transform type="identity"
+      property="transform.simple.result"
+      value="${transform.simple}" />
+  </target>
+
+  <target
+    name="transform-umlauts">
+    <antarctic:transform type="upper"
+      property="transform.umlauts.result"
+      value="${transform.umlauts}" />
+  </target>
+
+  <target
+    name="transform-propertyset-nodot">
+    <antarctic:transform type="upper"
+      prefix="result">
+      <propertyset
+        refid="transform.properties" />
+    </antarctic:transform>
+  </target>
+
+  <target
+    name="transform-propertyset-dot">
+    <antarctic:transform type="upper"
+      prefix="result.">
+      <propertyset
+        refid="transform.properties" />
+    </antarctic:transform>
+  </target>
+
+  <target
+    name="transform-propertyset-empty">
+    <antarctic:transform type="upper"
+      prefix="result" />
+  </target>
+
+  <target
+    name="transform-empty-value">
+    <antarctic:transform type="upper"
+      property="transform.empty" value="" prefix="" />
+  </target>
+
+</project>

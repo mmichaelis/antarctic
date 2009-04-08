@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--
+
+    Copyright (C) 2009 Mark Michaelis <thragor_at_gmx.net> Licensed under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+    either express or implied. See the License for the specific language governing permissions and limitations under the
+    License.
+  -->
+<project
+  name="org.arctic.ant.taskdefs.UpperTest"
+  basedir="."
+  xmlns:antarctic="antlib:org.arctic.ant">
+
+  <property
+    name="upper.simple"
+    value="LoremIpsumDolor" />
+  
+  <property
+    name="upper.umlauts"
+    value="LörümÜpsämDälör-ß€&quot;" />
+  
+  <propertyset
+    id="upper.properties">
+    <propertyref
+      name="upper.simple" />
+    <propertyref
+      name="upper.umlauts" />
+  </propertyset>
+  
+  <target
+    name="upper-simple">
+    <antarctic:upper
+      property="upper.simple.result"
+      value="${upper.simple}" />
+  </target>
+
+  <target
+    name="upper-umlauts">
+    <antarctic:upper
+      property="upper.umlauts.result"
+      value="${upper.umlauts}" />
+  </target>
+
+  <target
+    name="upper-propertyset-nodot">
+    <antarctic:upper
+      prefix="result">
+      <propertyset
+        refid="upper.properties" />
+    </antarctic:upper>
+  </target>
+
+  <target
+    name="upper-propertyset-dot">
+    <antarctic:upper
+      prefix="result.">
+      <propertyset
+        refid="upper.properties" />
+    </antarctic:upper>
+  </target>
+
+  <target
+    name="upper-propertyset-empty">
+    <antarctic:upper
+      prefix="result" />
+  </target>
+
+  <target
+    name="upper-empty-value">
+    <antarctic:upper
+      property="upper.empty" value="" prefix="" />
+  </target>
+
+</project>

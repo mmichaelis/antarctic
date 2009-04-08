@@ -1,0 +1,9 @@
+# Ignore generated directories
+target/
+# Ignore Eclipse Project Files
+/.settings/
+/.project
+/.classpath
+# Ignore temporary and output files
+*.log
+*.tmp

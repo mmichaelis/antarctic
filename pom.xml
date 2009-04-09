@@ -10,9 +10,9 @@
   <name>AntArctic</name>
   <url>http://github.com/Thragor/antarctic/tree/master</url>
   <scm>
-    <connection>scm:git:git://github.com/Thragor/antarctic.git</connection>
+    <connection>scm:git:git://github.com/Thragor/antarctic.git/tags/ant-arctic-plugin-1.0</connection>
     <!-- <developerConnection>scm:git:git@github.com:Thragor/antarctic.git</developerConnection>  -->
-    <developerConnection>scm:git:git@github.com/Thragor/antarctic.git</developerConnection>
+    <developerConnection>scm:git:git@github.com/Thragor/antarctic.git/tags/ant-arctic-plugin-1.0</developerConnection>
   </scm>
   <description><![CDATA[
     AntArctic is a collection of tasks as extension for Apache Ant.
@@ -52,12 +52,8 @@
       <url>http://download.java.net/maven/2</url>
     </repository>
     <!--
-    <repository>
-      <id>maven-repository.dev.java.net</id>
-      <name>Java.net Maven 1 Repository (legacy)</name>
-      <url>http://download.java.net/maven/1</url>
-      <layout>legacy</layout>
-    </repository>
+      <repository> <id>maven-repository.dev.java.net</id> <name>Java.net Maven 1 Repository (legacy)</name>
+      <url>http://download.java.net/maven/1</url> <layout>legacy</layout> </repository>
     -->
     <repository>
       <id>local.repo</id>
@@ -102,7 +98,7 @@
         <version>1.2</version>
         <configuration>
           <goals>install</goals>
-<connectionType>developerConnection</connectionType>
+          <connectionType>developerConnection</connectionType>
         </configuration>
       </plugin>
       <plugin>
@@ -119,6 +115,13 @@
           <mapping>
             <java>SLASHSTAR_STYLE</java>
           </mapping>
+          <includes>
+            <include>src/**</include>
+          </includes>
+          <excludes>
+            <exclude>**/*.txt</exclude>
+          </excludes>
+          <useDefaultExcludes>true</useDefaultExcludes>
         </configuration>
         <executions>
           <execution>

@@ -8,7 +8,7 @@
   <url>http://github.com/Thragor/antarctic/tree/master</url>
   <scm>
     <connection>scm:git:git://github.com/Thragor/antarctic.git/tags/ant-arctic-plugin-1.0</connection>
-    <developerConnection>scm:git:git@github.com:Thragor/antarctic.git/tags/ant-arctic-plugin-1.0</developerConnection>
+    <developerConnection>scm:git:git@github.com:Thragor/antarctic.git</developerConnection>
   </scm>
   <description><![CDATA[
     AntArctic is a collection of tasks as extension for Apache Ant.

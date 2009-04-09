@@ -14,18 +14,16 @@
     <developerConnection>scm:git:git@github.com:Thragor/antarctic.git</developerConnection>
   </scm>
   <distributionManagement>
-    <distributionManagement>
-      <repository>
-        <id>file-repository</id>
-        <name>Local Repository</name>
-        <url>file://${user.dir}/target/deploy/repository</url>
-      </repository>
-      <site>
-        <id>local-site</id>
-        <name>Local deployed site</name>
-        <url>file://${user.dir}/target/deploy/site</url>
-      </site>
-    </distributionManagement>
+    <repository>
+      <id>file-repository</id>
+      <name>Local Repository</name>
+      <url>file://${user.dir}/target/deploy/repository</url>
+    </repository>
+    <site>
+      <id>local-site</id>
+      <name>Local deployed site</name>
+      <url>file://${user.dir}/target/deploy/site</url>
+    </site>
   </distributionManagement>
   <description><![CDATA[
     AntArctic is a collection of tasks as extension for Apache Ant.

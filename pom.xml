@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.arctic</groupId>
   <artifactId>ant-arctic-plugin</artifactId>
@@ -10,6 +13,20 @@
     <connection>scm:git:git://github.com/Thragor/antarctic.git/tags/ant-arctic-plugin-1.0</connection>
     <developerConnection>scm:git:git@github.com:Thragor/antarctic.git</developerConnection>
   </scm>
+  <distributionManagement>
+    <distributionManagement>
+      <repository>
+        <id>file-repository</id>
+        <name>Local Repository</name>
+        <url>file://${user.dir}/target/deploy/repository</url>
+      </repository>
+      <site>
+        <id>local-site</id>
+        <name>Local deployed site</name>
+        <url>file://${user.dir}/target/deploy/site</url>
+      </site>
+    </distributionManagement>
+  </distributionManagement>
   <description><![CDATA[
     AntArctic is a collection of tasks as extension for Apache Ant.
   ]]></description>
@@ -47,14 +64,11 @@
       <name>Java.net Maven 2 Repository</name>
       <url>http://download.java.net/maven/2</url>
     </repository>
-    <!--
-      <repository> <id>maven-repository.dev.java.net</id> <name>Java.net Maven 1 Repository (legacy)</name>
-      <url>http://download.java.net/maven/1</url> <layout>legacy</layout> </repository>
-    -->
     <repository>
-      <id>local.repo</id>
-      <name>file repository to svn</name>
-      <url>file://${user.home}/mavenrepo</url>
+      <id>maven-repository.dev.java.net</id>
+      <name>Java.net Maven 1 Repository (legacy)</name>
+      <url>http://download.java.net/maven/1</url>
+      <layout>legacy</layout>
     </repository>
   </repositories>
   <pluginRepositories>

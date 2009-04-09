@@ -29,7 +29,6 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.BuildFileTest;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.types.FileSet;
-import org.arctic.ant.taskdefs.EchoFiles;
 
 public class EchoFilesTest extends BuildFileTest {
     private static final String ERROR_MSG = "Lorem Ipsum Dolor Sit Amet";
@@ -113,8 +112,9 @@ public class EchoFilesTest extends BuildFileTest {
         }
         catch (Exception e) {
             // exception expected
-            String expected = "Type \"" + String.valueOf(invalidType)
-                    + "\" is invalid. Choose either \"xml\" or \"text\".";
+            String expected =
+                    "Type \"" + String.valueOf(invalidType)
+                            + "\" is invalid. Choose either \"xml\" or \"text\".";
             assertEquals("Wrong exception message.", expected, e.getMessage());
         }
     }
@@ -174,8 +174,8 @@ public class EchoFilesTest extends BuildFileTest {
 
     private static String readTextFile(final File file) throws IOException {
         final StringBuffer sb = new StringBuffer(READ_BUFFER_SIZE);
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),
-                "UTF-8"));
+        final BufferedReader reader =
+                new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
 
         char[] chars = new char[1024];
         while (reader.read(chars) > -1) {
@@ -287,10 +287,6 @@ public class EchoFilesTest extends BuildFileTest {
     }
 
     private class EchoFilesWriteThrowsExceptionOnWrite extends EchoFiles {
-        /*
-         * (non-Javadoc)
-         * @see org.arctic.ant.taskdefs.EchoFiles#getWriter()
-         */
         @Override
         protected Writer getWriter() throws IOException {
             return new FileWriter("testWriteThrowsExceptionOnWrite.txt") {
@@ -303,10 +299,6 @@ public class EchoFilesTest extends BuildFileTest {
     }
 
     private class EchoFilesWriteThrowsExceptionOnCloseAndWrite extends EchoFilesWriteThrowsExceptionOnWrite {
-        /*
-         * (non-Javadoc)
-         * @see org.arctic.ant.taskdefs.EchoFiles#getWriter()
-         */
         @Override
         protected Writer getWriter() throws IOException {
             return new FileWriter("testWriteThrowsExceptionOnWrite.txt") {

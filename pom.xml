@@ -49,7 +49,7 @@
   </licenses>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>3.8.2</junit.version>
+    <junit.version>4.13.1</junit.version>
     <ant.version>1.7.1</ant.version>
     <jaxb.version>2.1</jaxb.version>
   </properties>
